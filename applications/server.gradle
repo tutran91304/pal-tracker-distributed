@@ -21,6 +21,8 @@ dependencies {
     compile "com.sun.xml.bind:jaxb-core:2.3.0"
     compile "com.sun.xml.bind:jaxb-impl:2.3.0"
     compile "javax.activation:activation:1.1.1"
+
+    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
 }
 
 
@@ -33,5 +35,10 @@ dependencyManagement {
 bootRun.environment([
         "APPLICATION_OAUTH_ENABLED": true,
         "SECURITY_OAUTH2_CLIENT_CLIENT_ID": "tracker-client",
-        "SECURITY_OAUTH2_CLIENT_CLIENT_SECRET": "supersecret"
+        "SECURITY_OAUTH2_CLIENT_CLIENT_SECRET": "supersecret",
+        "REGISTRATION_SERVER_ENDPOINT": "http://registration-server",
+])
+
+test.environment([
+        "REGISTRATION_SERVER_ENDPOINT": "http://registration-server",
 ])
